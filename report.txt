@@ -1,0 +1,12 @@
+🧾 SECURITY REPORT — SSH Failed Login Analysis
+Generated on: 2025-05-05 07:48:09
+
+🔍 Suspicious IPs (5+ failed attempts):
+
+🚨 203.0.113.45 — 18 failed attempts
+🚨 10.0.0.2 — 26 failed attempts
+🚨 203.0.113.200 — 15 failed attempts
+🚨 172.16.0.5 — 24 failed attempts
+🚨 192.168.1.10 — 22 failed attempts
+🚨 192.168.1.25 — 20 failed attempts
+🚨 198.51.100.23 — 28 failed attempts
