@@ -1,5 +1,5 @@
 🧾 SECURITY REPORT — SSH Failed Login Analysis
-Generated on: 2025-05-05 08:37:02
+Generated on: 2025-05-06 06:16:12
 
 🔍 Suspicious IPs (5+ failed attempts):
 

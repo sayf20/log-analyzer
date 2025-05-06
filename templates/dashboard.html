@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Log Analyzer Dashboard</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+</head>
+
+<script>
+    function toggleTheme() {
+        document.body.classList.toggle("dark");
+        localStorage.setItem("theme", document.body.classList.contains("dark") ? "dark" : "light");
+    }
+
+    window.onload = () => {
+        if (localStorage.getItem("theme") === "dark") {
+            document.body.classList.add("dark");
+        }
+    };
+</script>
+
+
+
+<body>
+    <header>
+        <h1>🔐 Log Analyzer Dashboard</h1>
+        <a href="/" class="upload-link">⬅ Upload New Log File</a>
+        <button class="theme-toggle" onclick="toggleTheme()">🌙 Dark Mode</button>
+    </header>
+
+    <main class="grid-container">
+        <div class="card">
+            <h2>📛 Failed Login Attempts</h2>
+            <ul>
+                {% for ip, attempts in results.failed_attempts.items() %}
+                    <li><strong>{{ ip }}</strong>: {{ attempts }} times</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="card">
+            <h2>🚨 Suspicious IPs</h2>
+            <ul>
+                {% for ip, attempts in results.suspicious_ips.items() %}
+                    <li><strong>{{ ip }}</strong>: {{ attempts }} failed attempts</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="card">
+            <h2>✅ Successful Logins</h2>
+            <ul>
+                {% for ip, attempts in results.successful_logins.items() %}
+                    <li><strong>{{ ip }}</strong>: {{ attempts }} times</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="card">
+            <h2>🙅 Failed Username Attempts</h2>
+            <ul>
+                {% for username, count in results.failed_usernames.items() %}
+                    <li><strong>{{ username }}</strong>: {{ count }} attempts</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="card">
+            <h2>👤 Successful Username Logins</h2>
+            <ul>
+                {% for username, count in results.successful_usernames.items() %}
+                    <li><strong>{{ username }}</strong>: {{ count }} logins</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="card chart-card">
+            <h2>📊 Failed Login Attempts (Chart)</h2>
+            <img src="{{ url_for('static', filename='failed_attempts_chart.png') }}" alt="Failed Attempts Chart">
+        </div>
+    </main>
+</body>
+</html>
